@@ -12,7 +12,8 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 
-app.set('port', (process.env.PORT|| 5000));
+var port = process.env.PORT|| 5000;
+app.set('port', port);
 
 // set routes to list all movies
 app.route('/movies')
