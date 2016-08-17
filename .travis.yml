@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+- node
+deploy:
+  provider: heroku
+  api_key:
+    secure: Sw9kv+dJl6+C+kKqm5h4nXvJaA8AhGkwO5mLxbBVBrhmGOYcp+gnit42fF9vJBUJ72aj6M+ysH9t5FmJGnW6wNNKaJBSzEZhuxsRdtP4TDjGNePfcSlWana9kTLCD2l6Fv4R+7OlDxPRNgfi2mVCo819+Ct4AKqC2ETDEarwrejyPSRrGoh5CSqv0lWzi/RvUYKxeyldpZWYmvt6IgIqr7VCyOvgQmuj7FGuyfbZK+k61rxjz4FYiAwNbH6a+QXZXolFuQBq546ozT2Xm6hFuBk5nRwYPw8sJlFdj6PGtMIp1dmsxFalFAizjVKjWXrU6d+mhOOSXZ8A4fr+oqVm9EseCINkIO1f66X6K2d7mI/jwpT5QhNuSxSypL0Rx8JhkTbVN1hn3HNuPkCxfasGavtlW4rnWSrCkXij6PZIjeT7HRziUVgSZFnxPFyk8UQQqZeDp0Eyt/ghrhvWcur3FxaVxmnV0Gufmpgmyjkb23lazYCYzScIgs9VyuIr3CIqAfljaq/RawzXMkSuuHMz09y+V/vGfDLcSBxnxm7zLS/XwTyP6CZyyyyEY1RYXQsRp08t+ducnRVr2KFpRVwRDL2116MoC/ExQ5tw2oH4zlB1LBTcpYvptrInMTORpTLki+ogE7MBmmVw4Z1OINM/ji1HKFBVDEoQOY8hQ+KcCL4=
+  app: intense-garden-89438
+  on:
+    repo: chriskhoo/myMDB
