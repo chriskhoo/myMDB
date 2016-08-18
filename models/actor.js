@@ -4,6 +4,7 @@ var actorSchema = new mongoose.Schema({
     firstName: {
       type: String,
       trim: true,
+      required: [true, "First name not found"]
     },
     lastName: {
       type: String,
@@ -12,7 +13,9 @@ var actorSchema = new mongoose.Schema({
     email: {
       type: String,
       unique: true,
-      index: true
+      index: true,
+      required: [true, "Email not found"],
+      match: [/.+\@.+\..+/, "Email format is invalid"]
     },
     age: Number,
     website: {
@@ -41,15 +44,37 @@ var actorSchema = new mongoose.Schema({
         return url;
       }
     }
-});
+},
+{
+  timestamps: {} }
+);
 
 // register virtual schema
-actorSchema.virtual('fullName').get(function(){
-  return this.firstName + ' ' + this.lastName;
-});
+actorSchema.virtual('fullName')
+.get(function(){
+  return this.firstName + ', ' + this.lastName;
+})
+// .set(function(fullName){
+//   var splitName = fullName.split(", ");
+//   this.firstName = splitName[0];
+//   this.lastName = splitName[1];
+// })
+;
 
 // set getters
 actorSchema.set('toJSON', {getters: true});
+
+// custom methods
+actorSchema.query = {
+  byName: function(name, cb) {
+      this.find({
+        $or: [
+          {firstName: new RegExp(name, 'i')},
+          {lastName: new RegExp(name, 'i')}
+        ]
+      }, cb);
+  }
+};
 
 // register schema
 var Actor = mongoose.model('Actor', actorSchema);

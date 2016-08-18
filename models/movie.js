@@ -31,11 +31,17 @@ var movieSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   }
-});
+},
+{
+  timestamps: {} }
+);
 
 // register the getter
 movieSchema.set('toJSON', {getters: true});
 
+movieSchema.pre('save', function(next){
+
+});
 // register the schema
 var Movie = mongoose.model('Movie', movieSchema);
 
